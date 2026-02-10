@@ -64,7 +64,7 @@ export default function AdminPage() {
         </p>
       </div>
 
-      <div className="bg-white/[0.05] backdrop-blur-sm rounded-2xl border border-white/10 p-6 space-y-4">
+      <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 space-y-4">
         {COMPONENTS.map((name) => (
           <div key={name} className="flex items-center justify-between py-2">
             <span className="font-medium text-slate-200">{LABELS[name]}</span>
@@ -76,7 +76,7 @@ export default function AdminPage() {
                   className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${
                     getPage(name) === p
                       ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
-                      : "bg-white/[0.07] text-slate-400 hover:bg-white/[0.12] hover:text-slate-200"
+                      : "bg-white/7 text-slate-400 hover:bg-white/12 hover:text-slate-200"
                   }`}
                 >
                   Page {p}
@@ -88,7 +88,7 @@ export default function AdminPage() {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <div className="bg-white/[0.03] rounded-xl p-5 border border-white/10">
+        <div className="bg-white/3 rounded-xl p-5 border border-white/10">
           <h3 className="font-semibold text-sm text-indigo-400 mb-3">Page 2</h3>
           <ul className="text-sm text-slate-400 space-y-1.5">
             {page2.map((c) => (
@@ -96,7 +96,7 @@ export default function AdminPage() {
             ))}
           </ul>
         </div>
-        <div className="bg-white/[0.03] rounded-xl p-5 border border-white/10">
+        <div className="bg-white/3 rounded-xl p-5 border border-white/10">
           <h3 className="font-semibold text-sm text-indigo-400 mb-3">Page 3</h3>
           <ul className="text-sm text-slate-400 space-y-1.5">
             {page3.map((c) => (

@@ -6,13 +6,13 @@ import { supabase } from "@/lib/supabase";
 type Config = { component_name: string; page_number: number };
 
 const inputClass =
-  "w-full bg-white/[0.07] border border-white/15 rounded-lg px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all";
+  "w-full bg-white/7 border border-white/15 rounded-lg px-4 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all";
 
 const btnPrimary =
   "w-full bg-indigo-600 text-white py-2.5 rounded-lg font-medium hover:bg-indigo-500 disabled:opacity-50 transition-all cursor-pointer";
 
 const btnSecondary =
-  "flex-1 border border-white/15 text-slate-300 py-2.5 rounded-lg font-medium hover:bg-white/[0.07] transition-all cursor-pointer";
+  "flex-1 border border-white/15 text-slate-300 py-2.5 rounded-lg font-medium hover:bg-white/7 transition-all cursor-pointer";
 
 export default function OnboardingWizard() {
   const [step, setStep] = useState(1);
@@ -50,7 +50,12 @@ export default function OnboardingWizard() {
         if (data) {
           setUserId(data.id);
           setEmail(data.email);
-          setStep(data.current_step);
+          // If user already completed onboarding (step 4+), show done state
+          if (data.current_step >= 4) {
+            setDone(true);
+          } else {
+            setStep(data.current_step);
+          }
           supabase
             .from("rvs_user_profiles")
             .select("*")
@@ -84,7 +89,12 @@ export default function OnboardingWizard() {
     if (existing) {
       setUserId(existing.id);
       localStorage.setItem("rvs_user_id", String(existing.id));
-      setStep(existing.current_step > 1 ? existing.current_step : 2);
+      // If user already completed onboarding (step 4+), show done state
+      if (existing.current_step >= 4) {
+        setDone(true);
+      } else {
+        setStep(existing.current_step > 1 ? existing.current_step : 2);
+      }
       setLoading(false);
       return;
     }
@@ -226,7 +236,7 @@ export default function OnboardingWizard() {
 
       {/* Step 1 */}
       {step === 1 && (
-        <div className="bg-white/[0.05] backdrop-blur-sm rounded-2xl border border-white/10 p-8 space-y-5">
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 space-y-5">
           <h2 className="text-2xl font-bold text-white">Create Your Account</h2>
           <p className="text-slate-400 text-sm">Get started by entering your email and password.</p>
           <div className="space-y-2">
@@ -245,7 +255,7 @@ export default function OnboardingWizard() {
 
       {/* Step 2 */}
       {step === 2 && (
-        <div className="bg-white/[0.05] backdrop-blur-sm rounded-2xl border border-white/10 p-8 space-y-6">
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 space-y-6">
           <div>
             <h2 className="text-2xl font-bold text-white">Tell Us More</h2>
             <p className="text-slate-400 text-sm mt-1">Help us get to know you better.</p>
@@ -262,7 +272,7 @@ export default function OnboardingWizard() {
 
       {/* Step 3 */}
       {step === 3 && (
-        <div className="bg-white/[0.05] backdrop-blur-sm rounded-2xl border border-white/10 p-8 space-y-6">
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 space-y-6">
           <div>
             <h2 className="text-2xl font-bold text-white">Almost Done</h2>
             <p className="text-slate-400 text-sm mt-1">Just a few more details and you&apos;re all set.</p>

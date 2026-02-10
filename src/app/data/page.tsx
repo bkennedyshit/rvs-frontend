@@ -43,7 +43,7 @@ export default function DataPage() {
         </div>
         <button
           onClick={fetchData}
-          className="text-sm bg-white/[0.07] hover:bg-white/[0.12] text-slate-300 px-4 py-2 rounded-lg transition-all border border-white/10 cursor-pointer"
+          className="text-sm bg-white/7 hover:bg-white/12 text-slate-300 px-4 py-2 rounded-lg transition-all border border-white/10 cursor-pointer"
         >
           ↻ Refresh
         </button>
@@ -59,7 +59,7 @@ export default function DataPage() {
         <div className="overflow-x-auto rounded-xl border border-white/10">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-white/[0.05] border-b border-white/10">
+              <tr className="bg-white/5 border-b border-white/10">
                 <th className="text-left px-4 py-3 text-slate-400 font-medium">ID</th>
                 <th className="text-left px-4 py-3 text-slate-400 font-medium">Email</th>
                 <th className="text-left px-4 py-3 text-slate-400 font-medium">Step</th>
@@ -76,7 +76,7 @@ export default function DataPage() {
                   ? [p.street_address, p.city, p.state, p.zip].filter(Boolean).join(", ")
                   : "";
                 return (
-                  <tr key={u.id} className="border-b border-white/5 hover:bg-white/[0.03] transition-colors">
+                  <tr key={u.id} className="border-b border-white/5 hover:bg-white/3 transition-colors">
                     <td className="px-4 py-3 text-slate-300">{u.id}</td>
                     <td className="px-4 py-3 text-slate-200">{u.email}</td>
                     <td className="px-4 py-3">
